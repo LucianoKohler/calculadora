@@ -22,10 +22,6 @@ body{
     filter: opacity(90%);
 }
 
-#display, #container button{
-    font-size: 1.2em;
-}
-
 #display{
     grid-area: 1/1/4/5;
     background-color: #08082E;
@@ -35,12 +31,14 @@ body{
     justify-content: right;
     align-items: center;
     padding-right: 10%;
-    font-size: 1vw;
+    font-size: 1.5vw;
 }
 
 #container button{
     grid-area: span 2;
     border: none;
+    font-size: 1.2em;
+
 }
 
 #container button:hover{

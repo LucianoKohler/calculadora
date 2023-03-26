@@ -2,11 +2,10 @@ var display = document.getElementById('display')
 var buttons = document.getElementsByClassName('button')
 
 
-
 for (let i=0; i<= buttons.length-1; i++){
     buttons[i].addEventListener('click', function(){
-        console.log(this.dataset.type);
         var char = this.dataset.type;
+
         switch(char){
             case '1':
             case '2':
@@ -18,25 +17,55 @@ for (let i=0; i<= buttons.length-1; i++){
             case '8':
             case '9':
             case '0':
-                display.innerHTML += char;
+                calculate('value', this.dataset.type)
                 break;
 
             case '+':
-                display.innerHTML += ' '+char+' ';
-                break;
             case '-':
-                display.innerHTML += ' '+char+' ';
-                break;
             case '*':
-                display.innerHTML += ' '+char+' ';
-                break;
             case '/':
-                display.innerHTML += ' '+char+' ';
-                break;
             case 'c':
-                display.innerHTML = '';
-                break;
+            case '.':
+            case '=':
+                calculate('action', this.dataset.type)
         }
     })
-}
 
+    function calculate(type, value){
+        if(type === 'action'){
+            switch(value){
+                case '+':
+                case '-':
+                case '*':
+                case '/':
+                    display.innerHTML +=value
+                    break;
+                case 'c':
+                    display.innerHTML=''
+                    break;
+                case '=':
+                    display.innerHTML = eval(display.innerHTML)
+            }
+
+        }else if (type === 'value'){
+            display.innerHTML += value
+        }
+        }
+    }
+
+
+
+    
+        // switch(operator){
+        //     case '+':
+        //         return parseFloat(firstnum) + parseFloat(secondnum);
+        //         break;
+        //     case '-':
+        //         return parseFloat(firstnum) - parseFloat(secondnum);
+        //         break;
+        //     case '*':
+        //         return parseFloat(firstnum) * parseFloat(secondnum);
+        //         break;
+        //     case '/':
+        //         return parseFloat(firstnum) / parseFloat(secondnum);
+        //         break;
